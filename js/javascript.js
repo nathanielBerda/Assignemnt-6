@@ -53,7 +53,7 @@ for(i=0;i<20;i++){
     }
 }
 
-t=Math.floor(Math.random()*16+2);
+t=Math.floor(Math.random()*18+1);
 for(i=0;i<3;i++){
 var tree = document.createElement('div');
     tree.className="square tree";
