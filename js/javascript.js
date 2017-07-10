@@ -6,6 +6,7 @@ main.style.border = "2px solid";
 main.style.marginLeft= "20px";
 main.style.marginTop= "20px";
 main.style.verticalAlign="bottom";
+main.style.display="inline-block";
 var body = document.getElementsByTagName("body")[0];
 body.appendChild(main);
 
