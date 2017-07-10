@@ -1,0 +1,8 @@
+.dirt{
+    width : 50px;
+display: inline-block;
+height : 50px;
+background-image: url('../imgs/dirt.png');
+background-size:contain;
+z-index: 10;
+}
