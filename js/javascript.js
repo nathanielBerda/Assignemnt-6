@@ -70,7 +70,19 @@ for(i=0;i<3;i++){
     leaf.style.marginLeft= t*50-100+i*50+50 + "px";
     leaf.style.marginTop= 550-array[t]*50-4*50-50*j+"px";
     leaf.innerHTML= i+","+array[i];
-    leaf.id="t"+"x"+i+"y"+j;
+    leaf.id="l"+"x"+i+"y"+j;
     main.appendChild(leaf);
     }
 }
+
+arrayRock=Math.floor(Math.random()*18);
+for(i=0;i<3;i++){
+    var rock = document.createElement('div');
+    rock.className="square rock";
+    rock.style.marginLeft= (arrayRock+i)*50+ "px";
+    rock.style.marginTop= 550-(array[arrayRock+i]+1)*50+"px";
+    rock.innerHTML= i+","+array[i];
+    rock.id="r"+"x"+i+"y"+j;
+    main.appendChild(rock);
+  }
+

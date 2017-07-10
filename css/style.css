@@ -26,3 +26,8 @@ background-image: url('../imgs/dirt.png');
 .leaf{
     background-image: url('../imgs/leaf.png');
 }
+
+.rock{
+    background-image: url('../imgs/rock.png');
+    z-index: 10;
+}
