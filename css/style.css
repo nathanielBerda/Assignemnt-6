@@ -1,8 +1,28 @@
-.dirt{
+.square{
     width : 50px;
-display: inline-block;
-height : 50px;
+    display: inline-block;
+    height : 50px;
+    vertical-align: bottom;
+    position: absolute;
+    background-size:contain;
+}
+
+.dirt{
 background-image: url('../imgs/dirt.png');
-background-size:contain;
-z-index: 10;
+}
+
+.sky{
+    background-color:  #7FFFD4;
+}
+
+.grass{
+    background-image: url('../imgs/grass.png');
+}
+
+.tree{
+    background-image: url('../imgs/tree.png');
+}
+
+.leaf{
+    background-image: url('../imgs/leaf.png');
 }
