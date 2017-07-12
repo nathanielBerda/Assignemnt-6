@@ -1,3 +1,14 @@
+.mainDiv {
+    width: 1000px;
+    height: 600px;
+    z-index: 9;
+    border: 2px solid;
+    margin-left: 20px;
+    margin-top: 20px;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
 .square{
     width : 50px;
     display: inline-block;
@@ -11,7 +22,7 @@
     z-index: 11
 }
 .dirt{
-background-image: url('../imgs/dirt.png');
+    background-image: url('../imgs/dirt.png');
 }
 
 .sky{
