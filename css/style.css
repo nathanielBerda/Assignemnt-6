@@ -9,6 +9,14 @@
     display: inline-block;
 }
 
+div {
+    color: white;
+}
+
+body {
+    cursor: url("../imgs/cursor/axe.png"), pointer;
+}
+
 .sideBar {
     width: 200px;
     height: 600px;
@@ -27,6 +35,10 @@
     height: 50px;
     margin: auto;
     margin-top: 20px;
+}
+
+.inventory:hover {
+    border: 1px solid red;
 }
 
 .toolAxe {
@@ -53,7 +65,7 @@
 .inv {
     background-size: contain;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .toolsBox > .tool:hover {
@@ -93,7 +105,7 @@
 }
 
 .sky{
-    background-color:  #7FFFD4;
+    background-color:  #82cff6;
 }
 
 .grass{
@@ -105,10 +117,14 @@
 }
 
 .leaf{
-    background-image: url('../imgs/leaf.png');
+    background-image: url('../imgs/leaf.gif');
 }
 
 .rock{
     background-image: url('../imgs/rock.png');
     z-index: 10;
+}
+
+.selected {
+    background-color: white;
 }
