@@ -15,6 +15,7 @@ div {
 
 body {
     cursor: url("../imgs/cursor/axe.png"), pointer;
+    overflow: hidden;    
 }
 
 .sideBar {
@@ -95,6 +96,7 @@ body {
     vertical-align: bottom;
     position: absolute;
     background-size:contain;
+    transition: all 0.4s ease;
 }
 .square:hover{
     box-shadow: 0px 0px 0px 2px white;
@@ -117,7 +119,7 @@ body {
 }
 
 .leaf{
-    background-image: url('../imgs/leaf.gif');
+    background-image: url('../imgs/leaf.png');
 }
 
 .rock{
