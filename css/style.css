@@ -38,6 +38,12 @@ body {
     margin-top: 20px;
 }
 
+.inventory.selected{
+    border: 1px solid red;
+    background-color: black;
+}
+
+
 .inventory:hover {
     border: 1px solid red;
 }
@@ -120,11 +126,12 @@ body {
 
 .leaf{
     background-image: url('../imgs/leaf.png');
+    z-index: 2;
 }
 
 .rock{
     background-image: url('../imgs/rock.png');
-    z-index: 10;
+    z-index: 1;
 }
 
 .selected {
