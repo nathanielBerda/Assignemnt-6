@@ -11,7 +11,7 @@ sideBar.appendTo( body );
 var toolsBox = $("<div></div>");
 toolsBox.addClass("toolsBox");
 toolsBox.appendTo( sideBar );
-toolsBox.css('cursor','pointer');
+
 toolsBox.css('z-index','999999');
 
 var toolAxe = $("<div></div>");
@@ -59,15 +59,15 @@ array= new Array(20);
 
 for(i=0;i<20;i++){
     array[i]=Math.floor(Math.random()*3+2);
-    console.log(array[i]);
+
 }
 for(i=0;i<20;i++){
     
 for(j=0;j<12;j++){
         var sky = document.createElement('div');
-    // sky.setAttribute("x", i);
+    sky.setAttribute("sx", i);
     sky.id="s"+"x"+i+"y"+j;
-    // sky.setAttribute('y', j);
+    sky.setAttribute('sy', j);
     sky.className="square sky"
     sky.style.marginLeft= i*50 + "px";
     sky.style.marginTop= 550-j*50+ "px";
@@ -118,7 +118,7 @@ var tree = document.createElement('div');
 for(i=t;i<t+3;i++){
     for(j=array[t];j<array[t]+4;j++){
     var leaf = document.createElement('div');
-    leaf.setAttribute("x", (i-1));
+    leaf.setAttribute("x", t);
     leaf.setAttribute('y', (j+4));
     leaf.className="square leaf";
     leaf.style.marginLeft= t*50-100+(i-t)*50+50 + "px";
@@ -145,8 +145,6 @@ for(i=arrayRock;i<arrayRock+3;i++){
 
 var selectedTool = '';
 
-
-
 $(".tool").click(function(){
 
     $('.tool').removeClass('selected');
@@ -170,32 +168,54 @@ $(".square.tree").on('click', treeClick);
 $(".square.leaf").on('click', leafClick);
 $(".square.grass").on('click', grassClick);
 $(".square.dirt").on('click', dirtClick);
-
+$(".square.sky").on('click',addelement);
 var rockCount = 0;
 var grassCount = 0;
 var woodCount = 0;
 var leafCount = 0;
 var dirtCount = 0;
+element="";
+
+function addelement(){
+    alert("create leaf");
+    i=parseInt($(this).attr('sx'));
+    j=parseInt($(this).attr('sy'));
+    alert(j);
+    var leaf = document.createElement('div');
+    leaf.setAttribute("x", 12);
+    leaf.setAttribute('y', (10+4));
+    leaf.className="square leaf";
+    leaf.style.marginLeft= i*50+"px"
+    leaf.style.marginTop= 550-j*50+"px";
+    leaf.innerHTML= "cacoudij"
+    leaf.id="cacou"
+    main.appendChild(leaf);
+}
+
+
+
 
 function rockClick(){
-    console.log("before click", $(this));
+    
     if (selectedTool == 'pickAxe'){
-        // var y = parseInt(this.style.marginTop);
-        // var f = $(this).attr('x');
-        // var g =  $(this).attr('y');
-        // console.log('x value::' + f);
+    var y = parseInt(this.style.marginTop);
+        var f = $(this).attr('x');
+        var g =  parseInt($(this).attr('y'));
+     
 
-        // var a = $( "div[x='"+f+"']" );
-        // console.log(a);
-        // for(j=g;j<12;j++){
-        //     // var oldMargin = a[j].css("margin-top")
-        //     console.log("to move dpwn",a[j], j)
-        //     $(a[j]).css('margin-top',parseInt(($(a[j]).css("margin-top"))+50+'px'))
-        // }
-
+        var a = $( "div[x='"+f+"']" );
+        console.log(a.length);
+        console.log(a);
+         for(j=g;j<a.length+1;j++){
+             // var oldMargin = a[j].css("margin-top")
+             var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
+             $(a[j]).css('margin-top',oldMargin);
+              var oldy = parseInt(($(a[j]).attr("y")))-1;
+             $(a[j]).attr('y',oldy);
+             $(a[j]).text(f+","+oldy);
+        }
 
         $(this).remove();
-        console.log('rock is gone');
 
        
 
@@ -214,8 +234,27 @@ function rockClick(){
 
 function grassClick(){
     if (selectedTool == 'shovel'){
+        var y = parseInt(this.style.marginTop);
+        var f = $(this).attr('x');
+        var g =  parseInt($(this).attr('y'));
+     
+
+        var a = $( "div[x='"+f+"']" );
+        console.log(a.length);
+        console.log(a);
+         for(j=g;j<a.length+1;j++){
+             // var oldMargin = a[j].css("margin-top")
+             var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
+             $(a[j]).css('margin-top',oldMargin);
+              var oldy = parseInt(($(a[j]).attr("y")))-1;
+             $(a[j]).attr('y',oldy);
+             $(a[j]).text(f+","+oldy);
+        }
+
+
+
+
         $(this).remove();
-        console.log('grass is gone');
 
         if (grassCount == 0){
             grassCount++;
@@ -230,22 +269,24 @@ function grassClick(){
 
 function dirtClick(){
     if (selectedTool == 'shovel'){
-        // var y = parseInt(this.style.marginTop);
-        // var f = $(this).attr('x');
-        // var g =  parseInt($(this).attr('y'));
-        // console.log('x value:' + f);
+        var y = parseInt(this.style.marginTop);
+        var f = $(this).attr('x');
+        var g =  parseInt($(this).attr('y'));
+     
 
-        // var a = $( "div[x='"+f+"']" );
-        // console.log(a);
-        // console.log(g);
-        // for(j=g;j<a.length;j++){
-        //     // var oldMargin = a[j].css("margin-top")
-        //     var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
-        //     $(a[j]).css('margin-top',oldMargin);
-        // }
+        var a = $( "div[x='"+f+"']" );
+        console.log(a.length);
+        console.log(a);
+         for(j=g;j<a.length+1;j++){
+             // var oldMargin = a[j].css("margin-top")
+             var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
+             $(a[j]).css('margin-top',oldMargin);
+              var oldy = parseInt(($(a[j]).attr("y")))-1;
+             $(a[j]).attr('y',oldy);
+             $(a[j]).text(f+","+oldy);
+        }
 
         $(this).remove();
-        console.log('dirt is gone');
 
         if (dirtCount == 0){
             dirtCount++;
@@ -260,8 +301,28 @@ function dirtClick(){
 
 function treeClick(){
     if (selectedTool == 'axe'){
+        var y = parseInt(this.style.marginTop);
+        var f = $(this).attr('x');
+        var g =  parseInt($(this).attr('y'));
+     
+
+        var a = $( "div[x='"+f+"']" );
+        console.log(a.length);
+        console.log(a);
+         for(j=g;j<a.length+1;j++){
+             // var oldMargin = a[j].css("margin-top")
+             var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
+             $(a[j]).css('margin-top',oldMargin);
+              var oldy = parseInt(($(a[j]).attr("y")))-1;
+             $(a[j]).attr('y',oldy);
+             $(a[j]).text(f+","+oldy);
+        }
+        
+        
+        
+        
+        
         $(this).remove();
-        console.log('tree is gone');
 
         if (woodCount == 0){
             woodCount++;
@@ -277,8 +338,7 @@ function treeClick(){
 
 function leafClick(){
     if (selectedTool == 'axe'){
-        $(this).remove();
-        console.log('leaf is gone');
+       $(this).remove();
 
         if (leafCount == 0){
             leafCount++;
