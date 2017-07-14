@@ -207,7 +207,7 @@ function pickBlock(){
 }
 
 
-
+var click = [rockClick, grassClick, treeClick, leafClick, dirtClick];
 
 
 
@@ -223,10 +223,11 @@ console.log(invArray[b]);
         j=parseInt($(this).attr('sy'));
         // alert(j);
         var are = document.createElement('div');
-        are.setAttribute("x", 12);
-        are.setAttribute('y', (10+4));
+        are.setAttribute("x", i);
+        are.setAttribute('y', j);
         $(are).addClass("square "+ element);
-        are.style.marginLeft= i*50+"px"
+        are.style.marginLeft= i*50+"px";
+        $(are).click(click[b]);
         are.style.marginTop= 550-j*50+"px";
         console.log(invArray[b]);
         main.appendChild(are);
@@ -243,31 +244,6 @@ console.log(invArray[b]);
     
     } 
 console.log('b is:' +b);
-
-    // if (grassCount != 0){
-    //     alert("create grass");
-    //     i=parseInt($(this).attr('sx'));
-    //     j=parseInt($(this).attr('sy'));
-    //     // alert(j);
-    //     var grass = document.createElement('div');
-    //     grass.setAttribute("x", 12);
-    //     grass.setAttribute('y', (10+4));
-    //     $(grass).addClass("square grass");
-    //     grass.style.marginLeft= i*50+"px"
-    //     grass.style.marginTop= 550-j*50+"px";
-    //     grass.innerHTML= "cacoudij"
-    //     grass.id="cacou"
-    //     main.appendChild(grass);
-    //     rockCount--;
-    //     $('#grassInv').text(grassCount);
-    //     if ($('#grassInv').text() == 0){
-    //         $('#grassInv').removeClass('inv grass');
-    //         $('#grassInv').text('');
-    //     }
-    // }
-
-
-
 }
 
 
@@ -275,38 +251,11 @@ console.log('b is:' +b);
 
 function rockClick(){
     if (selectedTool == 'pickAxe'){
-    // var y = parseInt(this.style.marginTop);
-    //     var f = $(this).attr('x');
-    //     var g =  parseInt($(this).attr('y'));
-     
-
-    //     var a = $( "div[x='"+f+"']" );
-    //     console.log(a.length);
-    //     console.log(a);
-    //      for(j=g;j<a.length+1;j++){
-    //          // var oldMargin = a[j].css("margin-top")
-    //          var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
-    //          $(a[j]).css('margin-top',oldMargin);
-    //           var oldy = parseInt(($(a[j]).attr("y")))-1;
-    //          $(a[j]).attr('y',oldy);
-    //          $(a[j]).text(f+","+oldy);
-    //     }
 
         $(this).remove();
-
        invArray[0]++;
-
-
-
-        if (rockCount == 0){
-            rockCount++;
-            $('#rockInv').addClass('inv rock');
-            $('#rockInv').text(rockCount);
-        } else {
-            rockCount++;
-            $('#rockInv').text(rockCount);
-        }
-    
+       $('#rockInv').addClass('inv rock');
+       $('#rockInv').text(invArray[0]);
     }
 }
 
@@ -330,19 +279,10 @@ function grassClick(){
         }
 
         invArray[1]++
-
-
-
         $(this).remove();
-
-        if (grassCount == 0){
-            grassCount++;
             $('#grassInv').addClass('inv grass');
-            $('#grassInv').text(grassCount);
-        } else {
-            grassCount++;
-            $('#grassInv').text(grassCount);
-        }
+            $('#grassInv').text(invArray[1]);
+        
     }
 }
 
@@ -357,7 +297,6 @@ function dirtClick(){
         console.log(a.length);
         console.log(a);
          for(j=g;j<a.length+1;j++){
-             // var oldMargin = a[j].css("margin-top")
              var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
              $(a[j]).css('margin-top',oldMargin);
               var oldy = parseInt(($(a[j]).attr("y")))-1;
@@ -367,15 +306,9 @@ function dirtClick(){
 
         $(this).remove();
 
-        if (dirtCount == 0){
-            dirtCount++;
             $('#dirtInv').addClass('inv dirt');
-            $('#dirtInv').text(dirtCount);
-        } else {
-            dirtCount++;
-            $('#dirtInv').text(dirtCount);
-        }
-    }
+            $('#dirtInv').text(invArray[4]);
+            }
 }
 
 function treeClick(){
@@ -403,14 +336,9 @@ function treeClick(){
         
         $(this).remove();
 
-        if (woodCount == 0){
-            woodCount++;
             $('#treeInv').addClass('inv tree');
-            $('#treeInv').text(woodCount);
-        } else {
-            woodCount++;
-            $('#treeInv').text(woodCount);
-        }
+            $('#treeInv').text(invArray[2]);
+        
 
     }
 }
@@ -419,14 +347,10 @@ function leafClick(){
     if (selectedTool == 'axe'){
        $(this).remove();
        invArray[3]++
-        if (leafCount == 0){
-            leafCount++;
             $('#leafInv').addClass('inv leaf');
-            $('#leafInv').text(leafCount);
-        } else {
-            leafCount++;
-            $('#leafInv').text(leafCount);
-        }
+
+            $('#leafInv').text(invArray[3]);
+        
 
     }
 }
