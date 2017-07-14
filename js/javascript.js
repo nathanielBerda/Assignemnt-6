@@ -259,7 +259,6 @@ function grassClick() {
 
         if (grassCount == 0) {
             grassCount++;
-            alert('yes')
             $('#grassInv').addClass('inv grass');
             $('#grassInv').text(invArray[1]);
         } else {
