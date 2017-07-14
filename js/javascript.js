@@ -123,18 +123,19 @@ for(i=arrayRock;i<arrayRock+3;i++){
 
 t=Math.floor(Math.random()*18+1);
 for(j=array[t];j<array[t]+3;j++){
-var tree = document.createElement('div');
-    tree.setAttribute("x", t);
-    tree.setAttribute('y', j+1);
-    tree.className="square tree";
-    tree.style.marginLeft= t*50 + "px";
-    tree.style.marginTop= 550-50*(j+1)+"px";
-    tree.id="t"+"x"+t+"y"+j+1;
-    main.appendChild(tree);
+    var tree = document.createElement('div');
+        tree.setAttribute("x", t);
+        tree.setAttribute('y', j+1);
+        tree.className="square tree";
+        tree.style.marginLeft= t*50 + "px";
+        tree.style.marginTop= 550-50*(j+1)+"px";
+        tree.id="t"+"x"+t+"y"+j+1;
+        main.appendChild(tree);
 }
+
 for(i=t;i<t+3;i++){
     for(j=array[t];j<array[t]+4;j++){
-    var leaf = document.createElement('div');
+var leaf = document.createElement('div');
     leaf.setAttribute("x", t);
     leaf.setAttribute('y', (j+4));
     leaf.className="square leaf";
@@ -145,12 +146,11 @@ for(i=t;i<t+3;i++){
     }
 }
 
-
-
-
 var selectedTool = '';
 
 $(".tool").click(function(){
+    element = '';
+    $('.inventory').removeClass('selected')
     $('.tool').removeClass('selected');
     selectedTool = this.id;
     $('.cursors').hide();
@@ -164,23 +164,17 @@ $(".tool").click(function(){
         $('#'+selectedTool).offset({
             left: e.pageX -50 ,
             top: e.pageY -50,
+        }); 
     });
-    //   
-});
 });
 
-$(".square.rock").click(rockClick);
-$(".square.tree").on('click', treeClick);
-$(".square.leaf").on('click', leafClick);
-$(".square.grass").on('click', grassClick);
-$(".square.dirt").on('click', dirtClick);
-
-$(".square.sky").on('click',addelement);
-
-$(".inventory").on('click',pickBlock);
-
-
-
+$(document).on("click",".square.rock", rockClick);
+$(document).on("click",".square.tree", treeClick);
+$(document).on("click",".square.leaf", leafClick);
+$(document).on("click",".square.grass", grassClick);
+$(document).on("click",".square.dirt", dirtClick);
+$(document).on("click",".square.sky", addelement);
+$(document).on("click",".inventory", pickBlock);
 
 var rockCount = 0;
 var grassCount = 0;
@@ -198,31 +192,20 @@ function pickBlock(){
     $('.toolsBox').children().removeClass('selected');
     $('.cursors').hide(); 
     body.style.cursor = 'pointer'; 
-
-    
     element = $(this).attr('element');
     $(this).addClass('selected');
     b = $(this).attr('arrayNo');
     console.log(b);
 }
 
-
-
-
-
-
 function addelement(){
     console.log('b is:' +b);
-console.log(invArray[b]);
+    console.log(invArray[b]);
     if (element == '') {
-
-    } 
-    else if (invArray[b] > 0){
-        // alert("create leaf");
+    } else if (invArray[b] > 0){
         i=parseInt($(this).attr('sx'));
         j=parseInt($(this).attr('sy'));
-        // alert(j);
-        var are = document.createElement('div');
+    var are = document.createElement('div');
         are.setAttribute("x", 12);
         are.setAttribute('y', (10+4));
         $(are).addClass("square "+ element);
@@ -230,7 +213,7 @@ console.log(invArray[b]);
         are.style.marginTop= 550-j*50+"px";
         console.log(invArray[b]);
         main.appendChild(are);
-        var hash = element+'Inv';
+    var hash = element+'Inv';
         
         if (invArray[b] == 0){
             $("#" + hash).removeClass('inv ' + element);
@@ -240,73 +223,24 @@ console.log(invArray[b]);
              invArray[b]--;  
            $("#" + hash).text(invArray[b]);
         } 
-    
     } 
 console.log('b is:' +b);
-
-    // if (grassCount != 0){
-    //     alert("create grass");
-    //     i=parseInt($(this).attr('sx'));
-    //     j=parseInt($(this).attr('sy'));
-    //     // alert(j);
-    //     var grass = document.createElement('div');
-    //     grass.setAttribute("x", 12);
-    //     grass.setAttribute('y', (10+4));
-    //     $(grass).addClass("square grass");
-    //     grass.style.marginLeft= i*50+"px"
-    //     grass.style.marginTop= 550-j*50+"px";
-    //     grass.innerHTML= "cacoudij"
-    //     grass.id="cacou"
-    //     main.appendChild(grass);
-    //     rockCount--;
-    //     $('#grassInv').text(grassCount);
-    //     if ($('#grassInv').text() == 0){
-    //         $('#grassInv').removeClass('inv grass');
-    //         $('#grassInv').text('');
-    //     }
-    // }
-
-
-
 }
-
-
-
 
 function rockClick(){
     if (selectedTool == 'pickAxe'){
-    // var y = parseInt(this.style.marginTop);
-    //     var f = $(this).attr('x');
-    //     var g =  parseInt($(this).attr('y'));
-     
-
-    //     var a = $( "div[x='"+f+"']" );
-    //     console.log(a.length);
-    //     console.log(a);
-    //      for(j=g;j<a.length+1;j++){
-    //          // var oldMargin = a[j].css("margin-top")
-    //          var oldMargin = parseInt(($(a[j]).css("margin-top")))+50+'px';
-    //          $(a[j]).css('margin-top',oldMargin);
-    //           var oldy = parseInt(($(a[j]).attr("y")))-1;
-    //          $(a[j]).attr('y',oldy);
-    //          $(a[j]).text(f+","+oldy);
-    //     }
-
         $(this).remove();
-
-       invArray[0]++;
-
-
+        invArray[0]++;
 
         if (rockCount == 0){
             rockCount++;
             $('#rockInv').addClass('inv rock');
-            $('#rockInv').text(rockCount);
+            $('#rockInv').text(invArray[0]);
         } else {
+            console.log
             rockCount++;
-            $('#rockInv').text(rockCount);
+            $('#rockInv').text(invArray[0]);
         }
-    
     }
 }
 
@@ -338,10 +272,10 @@ function grassClick(){
         if (grassCount == 0){
             grassCount++;
             $('#grassInv').addClass('inv grass');
-            $('#grassInv').text(grassCount);
+            $('#grassInv').text(invArray[1]);
         } else {
             grassCount++;
-            $('#grassInv').text(grassCount);
+            $('#grassInv').text(invArray[1]);
         }
     }
 }
@@ -370,10 +304,10 @@ function dirtClick(){
         if (dirtCount == 0){
             dirtCount++;
             $('#dirtInv').addClass('inv dirt');
-            $('#dirtInv').text(dirtCount);
+            $('#dirtInv').text(invArray[4]);
         } else {
             dirtCount++;
-            $('#dirtInv').text(dirtCount);
+            $('#dirtInv').text(invArray[4]);
         }
     }
 }
@@ -397,7 +331,6 @@ function treeClick(){
              $(a[j]).attr('y',oldy);
         }
         
-        
         invArray[2]++
         
         
@@ -406,10 +339,10 @@ function treeClick(){
         if (woodCount == 0){
             woodCount++;
             $('#treeInv').addClass('inv tree');
-            $('#treeInv').text(woodCount);
+            $('#treeInv').text(invArray[2]);
         } else {
             woodCount++;
-            $('#treeInv').text(woodCount);
+            $('#treeInv').text(invArray[2]);
         }
 
     }
@@ -422,10 +355,10 @@ function leafClick(){
         if (leafCount == 0){
             leafCount++;
             $('#leafInv').addClass('inv leaf');
-            $('#leafInv').text(leafCount);
+            $('#leafInv').text(invArray[3]);
         } else {
             leafCount++;
-            $('#leafInv').text(leafCount);
+            $('#leafInv').text(invArray[3]);
         }
 
     }
